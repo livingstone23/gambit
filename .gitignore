@@ -7,6 +7,10 @@
 *.dll
 *.so
 *.dylib
+main
+main.zip
+subo.bat
+
 
 # Test binary, built with `go test -c`
 *.test
