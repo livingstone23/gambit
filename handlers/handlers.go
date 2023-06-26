@@ -73,42 +73,44 @@ func validoAuthorization(path string, method string, headers map[string]string) 
 
 }
 
-func ProcesoUsers(body string, path string, method string, user string, id string, request events.APIGatewayV2HTTPRequest) (inst, status) {
+func ProcesoUsers(body string, path string, method string, user string, id string, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoUsers")
 
 	return 400, "method invalid"
 }
 
-func ProcesoProducts(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (inst, status) {
+func ProcesoProducts(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoProducts")
 
 	return 400, "method invalid"
 }
 
-func ProcesoCategory(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (inst, status) {
+func ProcesoCategory(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoCategory")
 
 	switch method {
 	case "POST":
 		return routers.InsertCategory(body, user)
+	case "PUT":
+		return routers.UpdateCategory(body, user, id)
 	}
 
 	return 400, "method invalid"
 }
 
-func ProcesoStocks(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (inst, status) {
+func ProcesoStocks(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoStocks")
 
 	return 400, "method invalid"
 }
 
-func ProcesoAddress(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (inst, status) {
+func ProcesoAddress(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoAddress")
 
 	return 400, "method invalid"
 }
 
-func ProcesoOrders(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (inst, status) {
+func ProcesoOrders(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoOrder")
 
 	return 400, "method invalid"
