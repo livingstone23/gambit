@@ -2,6 +2,7 @@ package tools
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -17,4 +18,28 @@ func EscapeString(t string) string {
 	desc := strings.ReplaceAll(t, "'", "")
 	desc = strings.ReplaceAll(desc, "\"", "")
 	return desc
+}
+
+func ArmoSentencia(s string, fieldsName string, typeField string, ValueN int, ValueF float64, ValueS string) string {
+	if (typeField == "S") && len(ValueS) == 0 ||
+		(typeField == "F" && ValueF == 0) ||
+		(typeField == "N" && ValueN == 0) {
+		return s
+	}
+
+	if !strings.HasSuffix(s, "SET ") {
+		s += ", "
+	}
+
+	switch typeField {
+	case "S":
+		s += fieldsName + " = '" + EscapeString(ValueS) + "'"
+	case "N":
+		s += fieldsName + " = " + strconv.Itoa(ValueN)
+	case "F":
+		s += fieldsName + " = " + strconv.FormatFloat(ValueF, 'e', -1, 64)
+	}
+
+	return s
+
 }
