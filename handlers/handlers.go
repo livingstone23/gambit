@@ -76,6 +76,22 @@ func validoAuthorization(path string, method string, headers map[string]string) 
 func ProcesoUsers(body string, path string, method string, user string, id string, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoUsers")
 
+	if path == "user/me" {
+		switch method {
+		case "PUT":
+			return routers.UpdateUser(body, user)
+		case "GET":
+			return routers.SelectUser(body, user)
+		}
+	}
+	if path == "users" {
+		switch method {
+		case "GET":
+			return routers.SelectUsers(body, user, request)
+		}
+
+	}
+
 	return 400, "method invalid"
 }
 
@@ -89,6 +105,8 @@ func ProcesoProducts(body string, path string, method string, user string, id in
 		return routers.UpdateProduct(body, user, id)
 	case "DELETE":
 		return routers.DeleteProduct(body, user, id)
+	case "GET":
+		return routers.SelectProduct(body, request)
 	}
 
 	return 400, "method invalid"
@@ -114,17 +132,37 @@ func ProcesoCategory(body string, path string, method string, user string, id in
 func ProcesoStocks(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoStocks")
 
-	return 400, "method invalid"
+	return routers.UpdateStock(body, user, id)
+
 }
 
 func ProcesoAddress(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoAddress")
+
+	switch method {
+	case "POST":
+		return routers.InsertAddress(body, user)
+	case "PUT":
+		return routers.UpdateAddress(body, user, id)
+	case "DELETE":
+		return routers.DeleteAddres(user, id)
+	case "GET":
+		return routers.SelectAddress(user)
+	}
 
 	return 400, "method invalid"
 }
 
 func ProcesoOrders(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	fmt.Println("Ingreando a la funcion ProcesoOrder")
+
+	switch method {
+	case "POST":
+		return routers.InsertOrder(body, user)
+	case "GET":
+		return routers.SelectOrders(user, request)
+
+	}
 
 	return 400, "method invalid"
 }

@@ -79,3 +79,35 @@ func UserIsAdmin(userUUIID string) (bool, string) {
 	return false, "User is not admin"
 
 }
+
+func UserExists(UserUUID string) (error, bool) {
+	fmt.Println("Inicializando funcion  db.UserExists")
+
+	err := DBConnect()
+	if err != nil {
+		return err, false
+	}
+
+	defer Db.Close()
+
+	sentencia := "SELECT 1 FROM users WHERE User_UUID='" + UserUUID + "'"
+	fmt.Println(sentencia)
+
+	rows, err := Db.Query(sentencia)
+	if err != nil {
+		return err, false
+	}
+
+	var valor string
+	rows.Next()
+	//con esta sintaxis si obtengo valor de consulta lo guardo en variable
+	rows.Scan(&valor)
+
+	fmt.Println("UserExist Ejecucion exitosa - Valor devuelto " + valor)
+
+	if valor == "1" {
+		return nil, true
+	}
+	return nil, false
+
+}
