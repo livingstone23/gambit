@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+//Estructura que viaja en el token
 type TokenJSON struct {
 	Sub       string
 	Event_Id  string

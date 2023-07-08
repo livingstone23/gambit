@@ -47,6 +47,7 @@ func Manejadores(path string, method string, body string, headers map[string]str
 
 func validoAuthorization(path string, method string, headers map[string]string) (bool, int, string) {
 	fmt.Println("Ingreando a metodo validoAuthorization")
+	//excluyo validacion de consultas libres
 	if (path == "product" && method == "GET") ||
 		(path == "category" && method == "GET") {
 		return true, 200, ""

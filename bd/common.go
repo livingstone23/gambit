@@ -12,6 +12,7 @@ import (
 
 var SecretModel models.SecretRDSJson
 var err error
+
 var Db *sql.DB
 
 func ReadSecret() error {

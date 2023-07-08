@@ -39,6 +39,7 @@ func EjecutoLambda(ctx context.Context, request events.APIGatewayV2HTTPRequest) 
 	//
 	status, message := handlers.Manejadores(path, method, body, header, request)
 
+	//Respuesta es un mapa de strings
 	headersResp := map[string]string{
 		"Content-Type": "application/json",
 	}
@@ -59,6 +60,7 @@ func ValidoParametros() bool {
 	if !traeParametro {
 		return traeParametro
 	}
+
 
 	_, traeParametro = os.LookupEnv("UrlPrefix")
 	if !traeParametro {

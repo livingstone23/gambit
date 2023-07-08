@@ -15,6 +15,7 @@ func InsertCategory(body string, User string) (int, string) {
 
 	var t models.Category
 
+	//Decodificamos el body, lo convertimos al modelo
 	err := json.Unmarshal([]byte(body), &t)
 	if err != nil {
 		return 400, "Error en los datos recibidos" + err.Error()
@@ -22,6 +23,10 @@ func InsertCategory(body string, User string) (int, string) {
 
 	if len(t.CategName) == 0 {
 		return 400, "Debe especificar el Nombre (title) de la categoria"
+	}
+
+	if len(t.CategPath) == 0 {
+		return 400, "Debe especificar el Path (Ruta) de la categoria"
 	}
 
 	isAdmin, msg := bd.UserIsAdmin(User)
@@ -34,6 +39,7 @@ func InsertCategory(body string, User string) (int, string) {
 		return 400, "Ocurrio un error al intentar realizar el registro de categoria" + t.CategName + " > " + err2.Error()
 	}
 
+	//Mensaje debe ser como un json
 	return 200, "{CategID: " + strconv.Itoa(int(result)) + "}"
 }
 
