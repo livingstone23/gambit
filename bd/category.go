@@ -61,6 +61,8 @@ func UpdateCategory(c models.Category) error {
 	}
 
 	if len(c.CategPath) > 0 {
+		//Consuto si la variable sentencia concluye con set, para considerar como armar
+		//la sentencia.
 		if !strings.HasSuffix(sentencia, "SET ") {
 			sentencia += " , "
 		}

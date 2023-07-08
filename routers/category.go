@@ -44,7 +44,7 @@ func InsertCategory(body string, User string) (int, string) {
 }
 
 func UpdateCategory(body string, User string, id int) (int, string) {
-	fmt.Println("Inicializando funcion  router.InsertCategory")
+	fmt.Println("Inicializando funcion  router.UpdateCategory")
 
 	var t models.Category
 
