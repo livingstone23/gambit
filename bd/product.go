@@ -129,7 +129,7 @@ func DeleteProduct(id int) error {
 
 	defer Db.Close()
 
-	sentencia := "Delete from products Where Prod_Id " + strconv.Itoa(id)
+	sentencia := "Delete from products Where Prod_Id =" + strconv.Itoa(id)
 
 	_, err = Db.Exec(sentencia)
 	if err != nil {
