@@ -74,7 +74,7 @@ func UserIsAdmin(userUUIID string) (bool, string) {
 	//con esta sintaxis si obtengo valor de consulta lo guardo en variable
 	rows.Scan(&valor)
 
-	fmt.Println("UserIdAdmin > Ejecucion exitosa - valor devuelto" + valor)
+	fmt.Println("UserIdAdmin > Ejecucion exitosa - valor devuelto " + valor)
 	if valor == "1" {
 		return true, ""
 	}

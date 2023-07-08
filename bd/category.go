@@ -22,8 +22,10 @@ func InsertCategory(c models.Category) (int64, error) {
 
 	defer Db.Close()
 
-	sentencia := "INSERT INTO category () Values('" + c.CategName + "','" + c.CategPath + "')"
+	sentencia := "INSERT INTO category (Categ_Name, Categ_Path ) Values('" + c.CategName + "','" + c.CategPath + "')"
 
+	fmt.Println("ejecutnado sentencia")
+	fmt.Println(sentencia)
 	var result sql.Result
 
 	result, err = Db.Exec(sentencia)
