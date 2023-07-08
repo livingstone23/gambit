@@ -51,15 +51,15 @@ func InsertProduct(p models.Product) (int64, error) {
 	}
 
 	if p.ProdPrice > 0 {
-		sentencia += ", '" + strconv.FormatFloat(p.ProdPrice, 'e', -1, 64)
+		sentencia += ", " + strconv.FormatFloat(p.ProdPrice, 'e', -1, 64)
 	}
 
 	if p.ProdCategId > 0 {
-		sentencia += ", '" + strconv.Itoa(p.ProdStock)
+		sentencia += ", " + strconv.Itoa(p.ProdCategId)
 	}
 
 	if p.ProdStock > 0 {
-		sentencia += ", Prod_Stock"
+		sentencia += ", " + strconv.Itoa(p.ProdStock)
 	}
 
 	if len(p.ProdPath) > 0 {
