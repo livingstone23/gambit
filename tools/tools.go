@@ -21,6 +21,7 @@ func EscapeString(t string) string {
 }
 
 func ArmoSentencia(s string, fieldsName string, typeField string, ValueN int, ValueF float64, ValueS string) string {
+	//confirma consistencia de los campos
 	if (typeField == "S") && len(ValueS) == 0 ||
 		(typeField == "F" && ValueF == 0) ||
 		(typeField == "N" && ValueN == 0) {
