@@ -6,6 +6,7 @@ type SecretRDSJson struct {
 	Engine              string `json:"engine"`
 	Host                string `json:"host"`
 	Port                int    `json"port"`
+	Dbname              string `json:"dbname"`
 	DbClusterIdentifier string `json:"dbClusterIdentifier"`
 }
 

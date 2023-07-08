@@ -44,7 +44,7 @@ func ConnStr(claves models.SecretRDSJson) string {
 	dbUser = claves.Username
 	authToken = claves.Password
 	dbEndpoint = claves.Host
-	dbName = "provimad"
+	dbName = claves.Dbname
 	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?allowCleartextPasswords=true", dbUser, authToken, dbEndpoint, dbName)
 	fmt.Println(dsn)
 	return dsn
@@ -57,17 +57,19 @@ func UserIsAdmin(userUUIID string) (bool, string) {
 	if err != nil {
 		return false, err.Error()
 	}
-
+	//Cierra conexion a la base de datos
 	defer Db.Close()
 
 	sentencia := "SELECT 1 FROM users WHERE User_UUID='" + userUUIID + "' AND User_Status = 0"
 	fmt.Println(sentencia)
+
 	rows, err := Db.Query(sentencia)
 	if err != nil {
 		return false, err.Error()
 	}
 
 	var valor string
+	//Nos posicionamos en el primer registro, para poder leer los datos
 	rows.Next()
 	//con esta sintaxis si obtengo valor de consulta lo guardo en variable
 	rows.Scan(&valor)
