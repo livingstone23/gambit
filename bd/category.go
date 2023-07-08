@@ -91,7 +91,7 @@ func DeleteCategory(id int) error {
 
 	defer Db.Close()
 
-	sentencia := "Delete from category Where Categ_Id " + strconv.Itoa(id)
+	sentencia := "Delete from category Where Categ_Id =" + strconv.Itoa(id)
 	fmt.Println("ejecucion sentencia")
 	fmt.Println(sentencia)
 
