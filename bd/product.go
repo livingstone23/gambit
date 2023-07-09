@@ -159,7 +159,7 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 	var sentenciaCount string
 	var where, limit string
 
-	sentencia = "Select Prod_Id, Prod_Title, Prod_Description, Prod_CreatedAt, Prod_Updated, Prod_Price, Prod_Path, Prod_CategoryId, Prod_Stock FROM  Products "
+	sentencia = "Select Prod_Id, Prod_Title, Prod_Description, Prod_CreatedAt, Prod_Updated, Prod_Price, Prod_Path, Prod_CategoryId, Prod_Stock FROM  products "
 	sentenciaCount = "Select count(*) as registros from products "
 
 	switch choice {
@@ -185,13 +185,14 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 
 	var rows *sql.Rows
 	rows, err = Db.Query(sentenciaCount)
-	//Nos aseguramos que cierra la sentencia
+	//Nos aseguramos que cierra la sentencia si se dio error
 	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
 		return Resp, err
 	}
 
+	//Colocamos el valor de la sentencia en la variable creada.
 	rows.Next()
 	var regi sql.NullInt32
 	err = rows.Scan(&regi)
