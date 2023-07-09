@@ -24,7 +24,7 @@ func UpdateUser(UField models.User, User string) error {
 
 	coma := ""
 	if len(UField.UserFirstName) > 0 {
-		sentencia = ","
+		coma = ","
 		sentencia += coma + "User_FirstName = '" + UField.UserFirstName + "'"
 	}
 
