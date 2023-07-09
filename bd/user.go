@@ -140,13 +140,13 @@ func SelectUsers(Page int) (models.ListUsers, error) {
 
 		var firstName sql.NullString
 		var lastName sql.NullString
-		var dateUpg sql.NullTime
+		var dateUpg sql.NullString
 
 		err = rows.Scan(&u.UserUUID, &u.UserEmail, &firstName, &lastName, &u.UserStatus, &u.UserDateAdd, &dateUpg)
 
 		u.UserFirstName = firstName.String
 		u.UserLastName = lastName.String
-		u.UserDateUpd = dateUpg.Time.String()
+		u.UserDateUpd = dateUpg.String
 		User = append(User, u)
 	}
 
