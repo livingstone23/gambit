@@ -33,6 +33,9 @@ func UpdateUser(UField models.User, User string) error {
 
 	sentencia += ", User_DateUpg = '" + tools.FechaMySQL() + "' Where User_UUID='" + User + "'"
 
+	println("ejecutando sentencia")
+	println(sentencia)
+
 	_, err = Db.Exec(sentencia)
 	if err != nil {
 		fmt.Println(err.Error())
