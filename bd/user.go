@@ -75,13 +75,13 @@ func SelectUser(UserId string) (models.User, error) {
 
 	var firstName sql.NullString
 	var lastName sql.NullString
-	var dateUpg sql.NullTime
+	var dateUpg sql.NullString
 
 	err = rows.Scan(&User.UserUUID, &User.UserEmail, &firstName, &lastName, &User.UserStatus, &User.UserDateAdd, &dateUpg)
 
 	User.UserFirstName = firstName.String
 	User.UserLastName = lastName.String
-	User.UserDateUpd = dateUpg.Time.String()
+	User.UserDateUpd = dateUpg.String
 
 	fmt.Println("Select User > Ejecucion exitosa")
 	return User, nil
