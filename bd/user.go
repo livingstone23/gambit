@@ -105,12 +105,9 @@ func SelectUsers(Page int) (models.ListUsers, error) {
 	var sentencia string
 	var sentenciaCount string = "Select count(*) as registros from users"
 
+	sentencia = "Select User_UUID, User_Email, User_FirstName, User_LastName, User_Status, User_DateAdd, User_DateUpg from users limit 10 "
 	if offset > 0 {
-		sentencia = "Select User_UUID, User_Email, User_FirstName, User_LastName, User_Status, User_DateAdd, User_DateUpg from users limit 10 OFFSET " + strconv.Itoa(offset)
-	}
-
-	if offset > 0 {
-		sentencia += " OFFSET " + strconv.Itoa(offset)
+		sentencia = " OFFSET " + strconv.Itoa(offset)
 	}
 
 	var rowsCount *sql.Rows
@@ -123,15 +120,17 @@ func SelectUsers(Page int) (models.ListUsers, error) {
 	}
 
 	defer rowsCount.Close()
+
 	rowsCount.Next()
 
 	var registros int
 	rowsCount.Scan(&registros)
 	listUser.TotalItems = registros
 
-	var rows *sql.Rows
-	fmt.Print("Ejecutando sentencia")
+	fmt.Print("Ejecutando sentencia simple")
 	fmt.Println(sentencia)
+
+	var rows *sql.Rows
 
 	rows, err = Db.Query(sentencia)
 	if err != nil {
