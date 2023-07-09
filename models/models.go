@@ -45,7 +45,7 @@ type User struct {
 	UserEmail     string `json:"userEmail"`
 	UserFirstName string `json:"userFirstName"`
 	UserLastName  string `json:"userLastName"`
-	UserStatus    string `json:"userStatus"`
+	UserStatus    int    `json:"userStatus"`
 	UserDateAdd   string `json:"userDateAdd"`
 	UserDateUpd   string `json:"userDateUpd"`
 }
