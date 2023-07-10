@@ -132,7 +132,7 @@ func DeleteAddress(id int) error {
 
 	defer Db.Close()
 
-	sentencia := "Delete from addresses Where Add_Id " + strconv.Itoa(id)
+	sentencia := "Delete from addresses Where Add_Id = " + strconv.Itoa(id)
 
 	_, err = Db.Exec(sentencia)
 	if err != nil {

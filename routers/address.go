@@ -72,7 +72,6 @@ func UpdateAddress(body string, User string, id int) (int, string) {
 		return 400, "No se encuentra el registro del ID usuario asociado" + User + " > " + err.Error()
 	}
 
-	fmt.Println("Llamando a la  funcion  bd.UpdateAddress")
 	err = bd.UpdateAddress(t)
 	if err != nil {
 		return 400, "Ocurrio un error al intentar actualizar la actualizacion de la direccion" + User + " > " + err.Error()
