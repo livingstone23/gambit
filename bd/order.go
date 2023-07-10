@@ -69,7 +69,7 @@ func SelectOrders(user string, fechaDesde string, fechaHasta string, page int, o
 			page = 1
 		}
 		if page > 1 {
-			offset = (10 * (page - 1))
+			offset = (5 * (page - 1))
 		}
 
 		if len(fechaHasta) == 10 {
