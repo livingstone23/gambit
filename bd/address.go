@@ -61,7 +61,7 @@ func AddressExists(User string, id int) (error, bool) {
 
 	fmt.Println("AddressExist > Ejecucion exitosa - valor devuelto  " + valor)
 
-	if valor == "" {
+	if valor == "1" {
 		return nil, true
 	}
 	return nil, false
