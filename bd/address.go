@@ -156,7 +156,7 @@ func SelectAddress(User string) ([]models.Address, error) {
 
 	defer Db.Close()
 
-	sentencia := "Select Add_Id, Add_Address, Add_City, Add_State, Add_PostalCode, Add_Phone, Add_Title, Add_Name From address Where Add_UserId = '" + User + "'"
+	sentencia := "Select Add_Id, Add_Address, Add_City, Add_State, Add_PostalCode, Add_Phone, Add_Title, Add_Name From addresses Where Add_UserId = '" + User + "'"
 
 	fmt.Println("Valor de sentencia")
 	fmt.Println(sentencia)
