@@ -22,7 +22,7 @@ func InsertAddress(addr models.Address, User string) error {
 
 	sentencia := "INSERT INTO addresses (Add_UserId, Add_Address, Add_City, Add_State, Add_PostalCode, Add_Phone, Add_Title, Add_Name )"
 	sentencia += " VALUES ('" + User + "','" + addr.AddAddress + "','" + addr.AddCity + "','" + addr.AddState + "','"
-	sentencia += addr.AddPostalCode + "','" + addr.AddPhone + "','" + addr.AddName + "')"
+	sentencia += addr.AddPostalCode + "','" + addr.AddPhone + "','" + addr.AddName + "','" + addr.AddName + "')"
 
 	fmt.Println("Vamos a ejecutar la sentancia: ")
 	fmt.Println(sentencia)
